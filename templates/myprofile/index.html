@@ -1,0 +1,272 @@
+{% extends "myprofile/base.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- particles -->
+    <div id="particles-js"></div>
+
+    <section class="hero-wrap js-fullheight">
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
+          <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center">
+            <div class="text text-center">
+              <span class="subheading">Hey! I am</span>
+              <h1>{{my_data.name}}</h1>
+              <h2>
+                I like
+                <span class="txt-rotate" data-period="2000" data-rotate='[ "Coding.", "Software Development", "Problem Solving.", "Books."]'></span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="scrollDown">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="glyphicon glyphicon-arrow-down"></div>
+    </section>
+
+    <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+      <div class="container">
+        <div class="row d-flex no-gutters">
+          <div class="col-md-6 col-lg-6 d-flex">
+            <div class="img-about img d-flex align-items-stretch">
+              <div class="overlay"></div>
+              <div class="img d-flex align-self-stretch align-items-center"
+                style="background-image: url({{my_data.image}})"
+              ></div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6 pl-md-5 py-5">
+            <div class="row justify-content-start pb-3">
+              <div class="col-md-12 heading-section ftco-animate">
+                <h2 class="mb-4">About Me</h2>
+                <h3>take tour to my <strong><a href="https://ahmed3atef.github.io/profile_website/">Home</a></strong></h3>
+                <p>{{my_data.descrip}}</p>
+                <ul class="about-info mt-4 px-md-0 px-2">
+                  <li class="d-flex"><span>Name:</span><span>{{my_data.name}}</span></li>
+                  <li class="d-flex">
+                    <span>Email:</span><span>{{my_data.email}}</span>
+                  </li>
+                  <li class="d-flex">
+                    <span>Phone:</span><span>{{my_data.phone}}</span>
+                  </li>
+                  <li class="d-flex">
+                    <span>Country:</span> <span>{{my_data.country}}</span>
+                  </li>
+                  <li class="d-flex"><span>City:</span><span>{{my_data.city}}</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="counter-wrap ftco-animate d-flex mt-md-3">
+              <div class="text">
+                <p>
+                  <a href="{{my_resume}}" class="btn btn-primary py-3 px-3">Download CV</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pb goto-here" id="resume-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <nav id="navi">
+              <ul>
+                <li><a href="#page-1">Education</a></li>
+                <li><a href="#page-2">Experience</a></li>
+                <li><a href="#page-3">Skills</a></li>
+                <li><a href="#page-4">Awards</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col-md-9">
+            <div id="page-1" class="page one">
+              <h2 class="heading">Education</h2>
+              {% for education in educations %}
+                <div class="resume-wrap d-flex ftco-animate">
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="flaticon-graduation-cap"></span>
+                  </div>
+                  <div class="text pl-3">
+                    <h2>{{education.institution}}</h2>
+                    <span class="position">{{education.degree}}</span>
+                    <p><strong>{{education.field_of_study}}</strong></p>
+                    <span><strong>{{education.location}}</strong></span> : 
+                    <span class="date">{{education.formatted_start_date}} - {{education.formatted_end_date}}</span>
+                  </div>
+                </div>
+              {% endfor %}
+              
+            </div>
+            <div id="page-2" class="page two">
+              <h2 class="heading">Experience</h2>
+              {% for xp in experinces %}
+                <div class="resume-wrap d-flex ftco-animate">
+                  <div
+                    class="icon d-flex align-items-center justify-content-center"
+                  >
+                    <span class="flaticon-suitcase"></span>
+                  </div>
+                  <div class="text pl-3">
+                    <h2>{{xp.title}}</h2>
+                    <span class="position">{{xp.company}}</span>
+                    <p>Location: <strong>{{xp.location}}</strong></p>
+                    <p class="date">{{xp.formatted_start_date}} - {{xp.formatted_end_date}}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+            <div id="page-3" class="page three">
+              <h2 class="heading">Skills</h2>
+              <!-- Skill Section -->
+              <div class="row mb-4 ftco-animate">
+                {% for skill in skills %}
+                  <div class="col">
+                    <img class="img-fluid grow" src="{{skill.image}}" title="{{skill.title}}"/>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div id="page-4" class="page four">
+              <h2 class="heading">Awards</h2>
+              {% for award in awards %}
+                <div class="resume-wrap d-flex ftco-animate">
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="{{award.icon}}"></span>
+                  </div>
+                  <div class="text pl-3">
+                    <h2>{{award.name}}</h2>
+                    <span class="position"><strong>{{award.event_name}}</strong></span>
+                    <span><strong> - {{award.issuing_organization}}</strong></span>
+                    <p class="date">{{award.formatted_date}}</p>
+                    <p>{{award.location}}</p>
+                  </div>
+                  <div class="icon d-flex align-items-center justify-content-center">
+                    <a href="{{award.credential_URL}}"><img src="{{award.image}}" class="icon d-flex align-self-stretch align-items-center"><a>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section" id="project-section">
+      <div class="container-fluid px-md-5">
+        <div class="row justify-content-center py-5 mt-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Projects</h2>
+          </div>
+        </div>
+        <div class="row">
+          {% for project in projects %}
+            <div class="col-md-4 text-center d-flex mx-auto ftco-animate">
+              <a href="{{project.url}}" target="_blank" class="services-1 shadow">
+                <span class="icon">
+                  <i class="{{project.icon}}"></i>
+                </span>
+                <div class="desc">
+                  <h3 class="mb-4">{{project.name}}</h3>
+                  <p><strong>
+                    {% for skill in project.skills_used.all %}
+                      • {{skill.title}} 
+                    {% endfor %}
+                  </strong></p>
+                  <p>
+                    {{project.discrip}}
+                  </p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+      <div class="container">
+        <div class="row justify-content-center mb-4 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2 class="mb-4">Contact Me</h2>
+          </div>
+        </div>
+
+        <div class="row d-flex justify-content-center contact-info mb-5">
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+            <div class="align-self-stretch box text-center p-4 shadow">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="icon-phone2"></span>
+              </div>
+              <div>
+                <h3 class="mb-4">Contact Number</h3>
+                <p><a href="#contact-section">{{my_data.phone}}</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 d-flex ftco-animate">
+            <div class="align-self-stretch box text-center p-4 shadow">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="icon-paper-plane"></span>
+              </div>
+              <div>
+                <h3 class="mb-4">Email Address</h3>
+                <p><a href="#contact-section">{{my_data.email}}</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+            <div class="align-self-stretch box text-center p-4 shadow">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="icon-globe"></span>
+              </div>
+              <div>
+                <h3 class="mb-4">Website</h3>
+                <p><a href="#">ahmedatef.me</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row no-gutters block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form method="POST" action="" class="bg-dark p-4 p-md-5 contact-form">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Your Name" required/>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Your Email" required />
+              </div>
+              <div class="form-group">
+                <textarea id="" cols="30"rows="7" class="form-control" name="message" placeholder="Message" required ></textarea>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5"/>
+                <input type="hidden" name="_next" value="//ahmedatef.me" />
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-6 d-flex">
+            <div class="img" style="background-image: url({% static "images/contact.jpg" %})"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock body %}
+
