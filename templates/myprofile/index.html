@@ -125,13 +125,21 @@
             <div id="page-3" class="page three">
               <h2 class="heading">Skills</h2>
               <!-- Skill Section -->
-              <div class="row mb-4 ftco-animate">
-                {% for skill in skills %}
-                  <div class="col">
-                    <img class="img-fluid grow" src="{{skill.image}}" title="{{skill.title}}"/>
+              {% for skill in skills %}
+                {% if loop.index0 % 6 == 0 %}
+                  <div class="row mb-4 ftco-animate">
+                {% endif %}
+                    <div class="col">
+                      <img
+                        class="img-fluid grow"
+                        src="{{ skill.image }}"
+                        title="{{ skill.title }}"
+                      />
+                    </div>
+                {% if loop.index0 % 6 == 5 or loop.last %}
                   </div>
-                {% endfor %}
-              </div>
+                {% endif %}
+              {% endfor %}
             </div>
             <div id="page-4" class="page four">
               <h2 class="heading">Awards</h2>
