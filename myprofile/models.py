@@ -48,7 +48,7 @@ class Experience(models.Model):
     end_date = models.DateField(null=True, blank=True)
     
     class Meta:
-        ordering = ['-end_date']
+        ordering = ['-start_date']
     
     def __str__(self):
         return f"{self.title} at {self.company}"
