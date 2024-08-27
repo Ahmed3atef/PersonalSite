@@ -125,6 +125,8 @@ class Project(models.Model):
         'icon-keyboard':"keyboard",
         'icon-web':"web",
         'icon-server':"server",
+        'icon-network_wifi':"wifi",
+        'icon-network_cell':"network",
     }
     
     icon = models.CharField(max_length=200,choices=icons)
