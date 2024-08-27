@@ -123,6 +123,8 @@ class Project(models.Model):
         'icon-compress':"compress",
         'icon-mail-forward':"mail",
         'icon-keyboard':"keyboard",
+        'icon-web':"web",
+        'icon-server':"server",
     }
     
     icon = models.CharField(max_length=200,choices=icons)
