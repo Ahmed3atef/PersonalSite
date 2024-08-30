@@ -128,6 +128,7 @@ STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
 # Optional: Use this if you have custom static files storage needs
+# you can use the buildin engin (django.contrib.staticfiles.storage.StaticFilesStorage) and delete the whitenoise then collectstatic
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDAI_URL = "/media/"
