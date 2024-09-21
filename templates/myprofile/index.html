@@ -35,7 +35,7 @@
             <div class="img-about img d-flex align-items-stretch">
               <div class="overlay"></div>
               <div class="img d-flex align-self-stretch align-items-center"
-                style="background-image: url({{ MEDIA_URL }}{{my_data.image.url}})"
+                style="background-image: url({{my_data.image.url}})"
               ></div>
             </div>
           </div>
@@ -63,7 +63,7 @@
             <div class="counter-wrap ftco-animate d-flex mt-md-3">
               <div class="text">
                 <p>
-                  <a href="{{ MEDIA_URL }}{{my_resume}}" class="btn btn-primary py-3 px-3">Download CV</a>
+                  <a href="{{my_resume}}" class="btn btn-primary py-3 px-3">Download CV</a>
                 </p>
               </div>
             </div>
@@ -132,7 +132,7 @@
                     <div class="col">
                       <img
                         class="img-fluid grow"
-                        src="{{ MEDIA_URL }}{{ skill.image.url }}"
+                        src="{{ skill.image.url }}"
                         title="{{ skill.title }}"
                       />
                     </div>
@@ -157,7 +157,7 @@
                   </div>
                   <div class="icon d-flex align-items-center justify-content-center">
                     <a href="{{award.credential_URL}}">
-                      <img src="{{ MEDIA_URL }}{{award.image.url}}" class="img-fluid">
+                      <img src="{{award.image.url}}" class="img-fluid">
                     </a>
                   </div>
                 </div>
