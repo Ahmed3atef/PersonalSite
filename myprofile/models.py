@@ -127,6 +127,8 @@ class Project(models.Model):
         'icon-server':"server",
         'icon-network_wifi':"wifi",
         'icon-network_cell':"network",
+        'icon-dollar':"dollar",
+        'icon-bank':'bank',
     }
     
     icon = models.CharField(max_length=200,choices=icons)
